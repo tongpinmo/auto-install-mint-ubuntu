@@ -1,0 +1,1584 @@
+1：查看 nvidia驱动
+  在System Settings-->Administration-->Driver Manager可以查看到 驱动的推荐型号，
+  nvidia-smi
+  nvidia-settings
+
+
+  几个查看显卡驱动情况的命令：
+
+  glxinfo | grep rendering
+
+  dpkg -l | grep nvidia
+
+  lspci | grep -i nvidia
+
+  lsmod | grep nvidia
+
+  安装nvidia 驱动
+  sudo apt-get install nvidia-*(此处根据你的型号）
+  卸载nvidia 驱动
+  sudo apt-get --purge remove nvidia-*
+
+  验证操作系统：
+  lsb_release -a 
+
+2:截图的命令
+  sudo apt-get install scrot
+  scrot -s
+  scrot -s -d 5(延迟截屏）
+  
+  gnome-screenshot -a(抓取一个区域）
+                   -w(抓取窗口）
+                   
+3:查看ubuntu版本号
+
+  cat /etc/lsb-release
+
+4:查看内核版本号
+  uname -r(4.4.0-21-generic)
+  uname -a
+  
+5:查看显卡信息
+  lspci
+  
+6:强制删除非空目录
+
+  rm -r  filename
+  将 filename 子目录及子目录中所有档案删除 :
+
+  rm -rf filename
+  将 filename 子目录及子目录中所有档案删除,并且不用--确认 :
+  
+
+7:关机,休眠，挂机命令
+  a:/sbin/shutdown -h now （立即关机）
+                   -h 10'（过10min关机）
+		   -t sec（t秒之后关机）
+  b:sudo hact（立即关机）
+f
+  c：休眠 sudo pm-hibernate
+     挂机 sudo pm-suspend
+ 
+8：打开实验室服务器的配置文件
+  gedit .bashrc(gedit ~/.bashrc) ,加入配置信息
+  cd /mnt
+  mkdir PI_Lab(这个文件夹要自己建立）
+  source .bashrc(使其生效）
+  mount_server
+  ls /mnt
+
+9:看 sudo apt-get install 软件安装的位置
+  dpkg -L softwarename
+
+10:shadsocks
+  cd software
+  cd shadowsocks
+  ls 
+  sudo sslocal -c ./shadowsocks.json
+
+11:返回上一层目录
+  cd ..（返回上一层目录,可以连续操作，穿透多层目录）
+  cd - （返回上一次工作目录）
+
+12：linux 查找软件命令
+  a:which
+  b:whereis + filename
+
+  c:locate + 软件中文名  
+	如: locate shadowsocks.json
+		locate  PIL
+ 
+13:打开照片
+  display a.jpg
+
+14:pip 安装库文件
+  如：  sudo pip install sklearn
+
+15：查看网速
+  sudo nethogs
+  sudo netstat
+
+16:查找目录：sudo find /(查找范围） -name '关键字‘
+17：建立文本文件：touch filename 
+18:vi 用法：vi 路径/filename,写完之后，:wq
+19:查看显示屏分辨率:xrandr
+
+20:dpkg 命令的用法：https://www.cnblogs.com/TankXiao/p/3332457.html
+  安装软件：dpkg -i <file name .deb>
+  列出与该包相关联的文件：dpkg -L package
+  显示包的版本：dpkg -l pakage
+ 
+21:装网易云：
+ 1:官网下载deb包  
+ 2:dpkg -i netease-cloud-music_1.1.0_amd64_ubuntu.deb  (install)
+  101  ls 
+  102  dpkg -L netease-cloud-music 					   (列出与包关联的文件)
+  103  dpkg -l netease-cloud-music                     (显示包的版本)
+  104  sudo  netease-cloud-music    (打开网易云)
+22:
+   14  gedit .bashrc 
+   15  source .bashrc 
+   16  mount_server 
+23:
+sudo apt-get install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils
+
+24：安装pip:
+  178  sudo apt-get install pip
+  179  wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate
+  181  sudo python get-pip.py
+  182  ls 
+
+安装pip3:
+	sudo apt-get install python3-pip
+
+25：安装numpy,scipy,matplotlib库
+  186  pip install nose
+  187  sudo pip install nose
+  188  sudo pip install numpy
+  189  sudo pip install scipy
+  190  sudo pip install matplotlib
+  191  sudo pip install pillow
+  192  python
+  193  sudo apt-get install python-tk
+  194  python
+
+26：安装setuptools
+ 我这里的前提是有setuptools-2.0.tar.gz 包
+  210  cd Downloads/
+  211  ls
+  212  tar zvxf setuptools-2.0.tar.gz 
+  213  cd setuptools-2.0/
+  214  ls 
+  216  sudo python setup.py build
+  217  sudo python setup.py install
+
+27：安装cuda-8.0
+ 359  sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+  360  sudo apt-get update
+  361  sudo apt-get install cuda
+  362  sudo apt-get install cuda-drivers
+  363  cd /usr/local/cuda-8.0/samples/
+  364  ls 
+  365  cd 1_Utilities/
+  366  ls 
+  367  cd deviceQuery
+  368  ls 
+  370  sudo make
+  371  ls 
+  372  sudo ./deviceQuery  (pass)
+
+28：强制删除命令
+  sudo rm -rf filename
+
+然后添加路径到.bashrc中：
+ gedit ~/.bashrc
+ export PATH=/usr/local/cuda-8.0/bin:$PATH
+ export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+ source ~/.bashrc
+使其生效！
+相关链接：https://github.com/IraAI/caffe-gpu-installation/blob/master/README.md
+     http://blog.csdn.net/Sunshine__love/article/details/78677731
+
+
+ubuntu 下面有趣的命令
+  390  sudo apt-get install cmatrix
+  391  cmatrix -b（天书）
+  392  sudo apt-get install sl（火车）    (卸载软件的命令：sudo apt-get autoremove --purge +软件名称）
+  393  sl
+  394  sudo apt-get install figlet
+  395  sudo apt-get install toilet
+  396  figlet some text（艺术字）
+  397  toilet some other text
+  398  figlet tongpinmo
+  399  toilet liting
+  400  toilet-man
+  401  toilet -man
+  402  man -toilet
+  403  xeyes（眼睛）
+  404  yes
+  405  factor 
+  406  factor 65 (分解因数）
+  407  factor 895
+  408  fortune（输出笑话，名言，古诗文）
+  409  fortune 
+  410  fortune 
+  411  telnet towel.blinkenlights.nl（星球大战）按住 ctrl+]然后输入quit退出
+  412  fortune
+  413  cowsay
+  414  history
+
+29：安装cudnn5.1
+ 如果是安装tensorflow的话，必须满足cudnn条件。
+ 下载地址：https://developer.nvidia.com/rdp/cudnn-archive(nvidia官网需要sign in)
+ 比如我下载到了 /software 文件夹下
+
+ tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz #or extract cudnn file
+　cd cuda/
+ ls (include lib64)
+
+ 将include中的cudnn.h文件和lib64中的.so文件拷贝到cuda8.0相应的目录中去(/usr/local/cuda 会链接到cuda-8.0下面去的)
+ cd lib64/
+
+ sudo cp lib* /usr/local/cuda-8.0/lib64/
+ 
+ cd include/
+
+ sudo cp cudnn.h /usr/local/cuda-8.0/include/
+
+ ！！！然后建立软链接（这步不可错过）	
+ 
+ 补充知识：
+ 软链接和硬链接:
+ 软链接：ln -s 源文件 目标文件
+ 硬链接：ln    源文件 目标文件 (没有参数-s) 
+   
+cd /usr/local/cuda/lib64
+sudo ln -sf libcudnn.so.5.1.10 libcudnn.so.5(-s也可以，-sf是强制）
+sudo ln -sf libcudnn.so.5 libcudnn.so
+
+ok！
+
+30：安装caffe
+1：安装依赖关系
+sudo apt-get install -y build-essential cmake git pkg-config
+
+sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler
+
+sudo apt-get install -y libatlas-base-dev
+
+sudo apt-get install -y --no-install-recommends libboost-all-dev
+
+sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
+
+sudo apt-get install -y python-pip
+
+sudo apt-get install -y python-dev
+
+sudo apt-get install -y python-numpy python-scipy
+
+sudo apt-get install -y libopencv-dev
+
+!!不要一次性把这么多命令输入，会导致有的跳过，一个一个的来最稳妥！
+
+cd /home/tongpinmo/software/caffe
+git clone https://github.com/BVLC/caffe.git
+cd caffe/python
+for req in $(cat requirements.txt); do sudo -H pip install $req --upgrade; done
+sudo apt-get update
+/******在 bashrc 中添加路径
+#export PYTHONPATH to your python folder in caffe folder (don't forget to write your user name and folder correctly)
+#for example:
+
+echo 'export PYTHONPATH=/home/user/code/caffe/python:$PYTHONPATH' >> ~/.bashrc
+
+
+cd /usr/lib/x86_64-linux-gnu
+
+sudo ln -s libhdf5_serial.so.10.1.0 libhdf5.so
+
+sudo ln -s libhdf5_serial.so.10.1.0 libhdf5_hl.so
+
+cd /home/tongpinmo/software/caffe
+cp Makefile.config.example Makefile.config
+gedit Makefile.config
+
+
+uncomment:
+
+    USE_CUDNN := 1
+
+    WITH_PYTHON_LAYER := 1
+
+change:
+
+    CUDA_DIR := /usr/local/cuda-8.0
+
+   69 PYTHON_INCLUDE := /usr/include/python2.7 \
+		/usr/lib/python2.7/dist-packages/numpy/core/include \
+        /usr/local/lib/python2.7/dist-packages/numpy/core/include
+   96 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
+   97 LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial
+(其他的没改）
+
+没有发现hdf5文件夹
+  594  sudo ln -s libhdf5_serial.so.10.1.0 libhdf5_hl.so
+  595  locate hdf5
+  596  cd /usr/include/
+
+然后建立硬链接
+  681  cd /usr/lib/x86_64-linux-gnu/
+  682  ls
+  686  sudo ln libhdf5_serial.so.10.1.0 libhdf5.so  
+  687  ll libhdf5*
+  688  ll libhdf5.so
+  689  ll libhdf5_hl.so
+  690  sudo ln libhdf5_serial_hl.so.10.0.2 libhdf5_hl.so
+  691  sudo ln-sf libhdf5_serial_hl.so.10.0.2 libhdf5_hl.so
+  692  sudo ln -sf libhdf5_serial_hl.so.10.0.2 libhdf5_hl.so
+  693  sudo ldconfig
+然后编译测试
+ cd /home/tongpinmo/software/caffe
+ mkdir build
+ cd build
+ cmake ..
+ cd ..
+ make all -j8
+ make test
+ sudo reboot
+ cd /home/tongpinmo/software/caffe
+ make runtest
+ make pycaffe
+ make distribute
+ 
+ python 
+ import caffe
+
+
+测试的时候出现一些问题，总结一下，可能不是很全面
+ /****编译caffe时，make distribution -j8出错
+fatal error: numpy/arrayobject.h:没有那个文件或目录
+解决：
+  参考网址：http://m.blog.csdn.net/shengchun75/article/details/75007852
+  
+  722  cd /usr/lib/python2.7/
+  723  ls
+  724  sudo apt-get install python-numpy
+  725  cd /usr/local/lib/python2.7/site-packages/numpy/core/include/numpy/
+  726  ls
+  727  cd ..
+  728  ls
+  729  cd ~
+  730  locate arrayobject
+  731  sudo pip uninstall numpy
+  732  sudo apt-get install python-numpy
+  733  sudo find / -name arrayobject.h
+  734  sudo find / -name numpy/arrayobject.h
+  735  locate arratobject.h
+  736  locate arrayobject.h
+  737  cd /usr/include/python2.7/
+  738  ls
+  739  sudo pip install numpy
+  740  cd /usr/local/lib/python2.7/dist-packages/numpy/core/include/
+  741  ls
+  742  cd numpy/
+  743  ls
+  744  cd ..
+  745  ls
+  746  pwd
+  747  locate arrayobject.h
+此时会出现arrayobject.h的位置
+
+ /******make runtest出错
+  Check failed: status == CUBLAS_STATUS_SUCCESS (1 vs. 0)  CUBLAS_STATUS_NOT_INITIALIZED
+
+  make runtest -j8
+  Makefile:532: recipe for target 'runtest' failed
+
+  make pycaffe -j8
+  fatal error: numpy/arrayobject.h: No such file or directory
+ /******////
+
+
+
+/*****测试一波mnist数据集***/
+
+    # 下载mnist数据集  
+    cd /home/tongpinmo/software/caffe/data/mnist/  
+    ./get_mnist.sh 获取mnist数据集  
+    在/home/tongpinmo/software/caffe/data/mnist/ 的目录下会多出训练集图片、训练集标签、测试集图片和测试集标签等4个文件  
+      
+    # mnist数据格式转换  
+    cd /home/tongpinmo/software/caffe 
+    ./examples/mnist/create_mnist.sh #(此时在/caffe/examples/mnist/目录下生成mnist_test_lmdb和mnist_train_lmdb两个LMDB格式的训练集和测试集)  
+      
+    # 训练mnist  
+    cd /home/tongpinmo/software/caffe 
+    ./examples/mnist/train_lenet.sh  
+测试通过
+I1229 20:01:44.748425 23166 solver.cpp:397]     Test net output #0: accuracy = 0.9911
+I1229 20:01:44.748446 23166 solver.cpp:397]     Test net output #1: loss = 0.0297048 (* 1 = 0.0297048 loss)
+I1229 20:01:44.748451 23166 solver.cpp:315] Optimization Done.
+I1229 20:01:44.748453 23166 caffe.cpp:259] Optimization Done.
+
+/**************/
+
+一些有用的链接网站：http://blog.csdn.net/kernlen/article/details/53882490
+			https://github.com/IraAI/caffe-gpu-installation/blob/master/README.md（问题是配置cudnn的时候没有建立软链接）
+
+
+/*************安装tensorflow******/
+ sudo pip install tensorflow-gpu==1.2.0
+ python
+ import tensorflow as tf
+ 查看版本：tf.__version__(1.2.0)
+
+/*********/
+
+/******执行.sh文件********/
+1:给.sh加上x执行权限，以hello.sh为例
+  chmod u+x hello.sh
+  ./hello.sh
+或
+  sh hello.sh
+删除文件
+ rm hello.sh
+
+2:绝对路径执行.sh文件
+ ./home/test/shell/hello.sh
+ /home/test/shell/hello.sh
+ sh /home/test/shell/hello.sh
+
+31：安装flash_player
+  778  tar -zxvf flash_player_npapi_linux.x86_64.tar.gz  
+  781  sudo cp libflashplayer.so  /usr/lib/mozilla/plugins （复制插件到火狐浏览器插件文件夹）
+  782  cd /usr/lib/mozilla/plugins                         （定位到插件目录）
+  783  chmod 755 libflashplayer.so
+
+32：/****配置fast-rcnn环境****/
+
+第一步：git官网的fast-rcnn源码
+终端：
+cd /home/tongpinmo/software/software
+git clone --recursive https://github.com/rbgirshick/fast-rcnn.git 
+
+第二步：Python安装包cython,python-opencv,easydict
+
+终端输入：
+sudo apt-get install python-pip
+sudo pip install cython(必须是pip安装）
+sudo apt-get install python-opencv
+sudo pip install easydict(必须是pip安装）
+
+第三步：编译Cython模块
+ 
+cd /home/tongpinmo/software/fast-rcnn/lib
+make
+
+第四步：生成caffe和pycaffe
+cd /home/tongpinmo/software/fast-rcnn/caffe-fast-rcnn
+cp Makefile.config.example Makefile.config
+gedit Makefile.config
+	修改文件
+	
+    打开 USE_CUDNN = 1，这个选项默认情况下时关闭的，让CUDA支持DNN
+
+    打开 WITH_PYTHON_LAYER = 1,这个在默认情况下也是关闭的，FastRCNN需要支持Python接口，因此需要打开
+
+    另外把USE_PKG_CONFIG = 1 记得打开，要不然会找不到一些库文件，PKG是linux用来管理库文件
+
+	Fast RCNN需要hdf5的支持，这个根据自己的Linux里的库文件安装路径添加，不清楚的可以find一下，不过一般情况下，	 INCLUDE_DIRS 应该添加上 /usr/include/hdf5/serial LIBRARY_DIRS 添加上 /usr/lib/x86_x64-linux-gnu/hdf5/serial
+ 	locate hdf5 可以找到位置
+如下所示：
+	INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include  /usr/include/hdf5/serial/
+	LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib  /usr/lib/x86_64-linux-gnu/hdf5/serial
+
+make -j8
+
+   出现错误：
+In file included from ./include/caffe/util/device_alternate.hpp:40:0,
+                 from ./include/caffe/common.hpp:19,
+                 from ./include/caffe/util/db.hpp:10,
+                 from src/caffe/util/db.cpp:1:
+./include/caffe/util/cudnn.hpp: In function ‘void caffe::cudnn::createPoolingDesc(cudnnPoolingStruct**, caffe::PoolingParameter_PoolMethod, cudnnPoolingMode_t*, int, int, int, int, int, int)’:
+./include/caffe/util/cudnn.hpp:124:41: error: too few arguments to function ‘cudnnStatus_t cudnnSetPooling2dDescriptor(cudnnPoolingDescriptor_t, cudnnPoolingMode_t, cudnnNanPropagation_t, int, int, int, int, int, int)’
+         pad_h, pad_w, stride_h, stride_w));
+
+Makefile:501: recipe for target '.build_release/src/caffe/util/db.o' failed
+make: *** [.build_release/src/caffe/util/db.o] Error 1
+
+Makefile:501: recipe for target '.build_release/src/caffe/util/benchmark.o' failed
+make: *** [.build_release/src/caffe/util/benchmark.o] Error 1
+
+尝试一：问题可能是当前版本的caffe的cudnn实现与系统所安装的cudnn的版本不一致。（失败）
+cd caffe-fast-rcnn
+git remote add caffe https://github.com/BVLC/caffe.git
+git fetch caffe
+git merge -X theirs caffe/master
+最后一步出错，fatal: unable to auto-detect email address (got 'tongpinmo@tongpinmo-System-Product-Name.(none)')
+
+尝试二：借鉴网站   http://blog.csdn.net/zoro_lov3/article/details/60581174
+需要注意的是，因为这个版本所用的cudnn为旧版本的，可能与新环境的cudnn不兼容，导致出现错误：
+    In file included from ./include/caffe/util/cudnn.hpp:5:0,  
+                     from ./include/caffe/util/device_alternate.hpp:40,  
+                     from ./include/caffe/common.hpp:19,  
+                     from ./include/caffe/util/db.hpp:6,  
+                     from src/caffe/util/db.cpp:1:  
+    /usr/local/cuda/include/cudnn.h:803:27: note: declared here  
+     cudnnStatus_t CUDNNWINAPI cudnnSetPooling2dDescriptor(  
+                               ^  
+    make: *** [.build_release/src/caffe/util/db.o] Error 1
+
+解决方法：
+1).将/fast-rcnn/caffe-fast-rcnn/include/caffe/util/cudnn.hpp 换成最新版的caffe里的cudnn的实现，即相应的cudnn.hpp.
+2).将/fast-rcnn/caffe-fast-rcnn/src/caffe/layer里的(.cpp,.cu)，有12个文件，所有以cudnn开头的文件都替换成最新版的caffe里的相应的同名文件。
+
+改完之后，运行 make -j8
+
+出现新的问题：
+
+CXX src/caffe/layers/cudnn_pooling_layer.cpp
+CXX src/caffe/layers/cudnn_sigmoid_layer.cpp
+CXX src/caffe/layers/cudnn_conv_layer.cpp
+CXX src/caffe/layers/cudnn_softmax_layer.cpp
+CXX src/caffe/layers/multinomial_logistic_loss_layer.cpp
+CXX src/caffe/layers/cudnn_relu_layer.cpp
+CXX src/caffe/layers/conv_layer.cpp
+CXX src/caffe/layers/softmax_layer.cpp
+src/caffe/layers/cudnn_pooling_layer.cpp:4:48: fatal error: caffe/layers/cudnn_pooling_layer.hpp: No such file or directory
+compilation terminated.
+src/caffe/layers/cudnn_sigmoid_layer.cpp:4:48: fatal error: caffe/layers/cudnn_sigmoid_layer.hpp: No such file or directory
+compilation terminated.
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_pooling_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_pooling_layer.o] Error 1
+make: *** Waiting for unfinished jobs....
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_sigmoid_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_sigmoid_layer.o] Error 1
+src/caffe/layers/cudnn_conv_layer.cpp:5:45: fatal error: caffe/layers/cudnn_conv_layer.hpp: No such file or directory
+compilation terminated.
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_conv_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_conv_layer.o] Error 1
+src/caffe/layers/cudnn_relu_layer.cpp:4:45: fatal error: caffe/layers/cudnn_relu_layer.hpp: No such file or directory
+compilation terminated.
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_relu_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_relu_layer.o] Error 1
+src/caffe/layers/cudnn_softmax_layer.cpp:6:48: fatal error: caffe/layers/cudnn_softmax_layer.hpp: No such file or directory
+compilation terminated.
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_softmax_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_softmax_layer.o] Error 1
+
+每次重新编译，首先需要清除以往编译的结果   make clean
+然后再重新编译
+
+新问题是：
+PROTOC src/caffe/proto/caffe.proto
+CXX src/caffe/util/benchmark.cpp
+CXX src/caffe/util/im2col.cpp
+CXX src/caffe/util/io.cpp
+CXX src/caffe/util/upgrade_proto.cpp
+CXX src/caffe/util/math_functions.cpp
+CXX src/caffe/util/db.cpp
+CXX src/caffe/util/insert_splits.cpp
+CXX src/caffe/util/cudnn.cpp
+CXX src/caffe/syncedmem.cpp
+CXX src/caffe/net.cpp
+CXX src/caffe/internal_thread.cpp
+CXX src/caffe/common.cpp
+CXX src/caffe/data_transformer.cpp
+CXX src/caffe/layer_factory.cpp
+CXX src/caffe/layers/hdf5_data_layer.cpp
+CXX src/caffe/layers/softmax_loss_layer.cpp
+CXX src/caffe/layers/im2col_layer.cpp
+CXX src/caffe/layers/accuracy_layer.cpp
+CXX src/caffe/layers/sigmoid_cross_entropy_loss_layer.cpp
+CXX src/caffe/layers/silence_layer.cpp
+CXX src/caffe/layers/concat_layer.cpp
+CXX src/caffe/layers/roi_pooling_layer.cpp
+CXX src/caffe/layers/exp_layer.cpp
+CXX src/caffe/layers/prelu_layer.cpp
+CXX src/caffe/layers/mvn_layer.cpp
+CXX src/caffe/layers/smooth_L1_loss_layer.cpp
+CXX src/caffe/layers/flatten_layer.cpp
+CXX src/caffe/layers/tanh_layer.cpp
+CXX src/caffe/layers/dropout_layer.cpp
+CXX src/caffe/layers/absval_layer.cpp
+CXX src/caffe/layers/window_data_layer.cpp
+CXX src/caffe/layers/lrn_layer.cpp
+CXX src/caffe/layers/split_layer.cpp
+CXX src/caffe/layers/loss_layer.cpp
+CXX src/caffe/layers/hdf5_output_layer.cpp
+CXX src/caffe/layers/cudnn_pooling_layer.cpp
+CXX src/caffe/layers/cudnn_sigmoid_layer.cpp
+CXX src/caffe/layers/sigmoid_layer.cpp
+src/caffe/layers/cudnn_pooling_layer.cpp:4:48: fatal error: caffe/layers/cudnn_pooling_layer.hpp: No such file or directory
+compilation terminated.
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_pooling_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_pooling_layer.o] Error 1
+make: *** Waiting for unfinished jobs....
+src/caffe/layers/cudnn_sigmoid_layer.cpp:4:48: fatal error: caffe/layers/cudnn_sigmoid_layer.hpp: No such file or directory
+compilation terminated.
+Makefile:501: recipe for target '.build_release/src/caffe/layers/cudnn_sigmoid_layer.o' failed
+make: *** [.build_release/src/caffe/layers/cudnn_sigmoid_layer.o] Error 1
+
+
+解决方法是：
+把 home/tongpinmo/software/caffe/include/caffe/layers 对应报的错误里面的 No such file or directory .hpp文件，拷贝到  /home/tongpinmo/software/fast-rcnn/caffe-fast-rcnn/src/caffe/layers里面去，（这里面都是.cu,.cpp文件）
+
+哈哈哈哈，一个一个的拷贝完就搞定了！！！
+
+当然会出现一些架构问题了：
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+
+这个不用管，大概是对性能不能发挥最大作用表示有些意见
+
+make pycaffe
+
+出现问题：
+LD -o .build_release/lib/libcaffe.so
+CXX/LD -o python/caffe/_caffe.so python/caffe/_caffe.cpp
+python/caffe/_caffe.cpp:10:31: fatal error: numpy/arrayobject.h: No such file or directory
+compilation terminated.
+Makefile:434: recipe for target 'python/caffe/_caffe.so' failed
+make: *** [python/caffe/_caffe.so] Error 1
+
+原因：python-numpy没有安装到位
+解决方法：
+输入命令
+sudo apt-get install python-numpy
+确认Makefile.config文件中有以下代码，注意路径或版本号与自己的相符。
+PYTHON_INCLUDE := /usr/include/python2.7 \
+
+/usr/lib/python2.7/dist-packages/numpy/core/include
+加上下面一个路径：
+ /usr/local/lib/python2.7/dist-packages/numpy/core/include
+
+make clean 
+make pycaffe
+OK！！！
+
+
+第五步：下载fetch_fast_rcnn_models
+看看readme里面有对数据集的说明，比如 imagenet,fast-rcnn等
+
+下载用网盘或者翻墙，不然太慢了：把url放在浏览器中
+README里面的脚本文件linux mint慢如牛！
+
+最后拷贝了一下fast_rcnn_models.tgz
+放在/home/tongpinmo/software/fast-rcnn/data里面
+解压
+cd /home/tongpinmo/software/fast-rcnn/tools
+./demo.py
+
+出现的问题是：
+layer {
+  name: "cls_prob"
+  type: "Softmax"
+  bottom: "cls_score"
+  top: "cls_prob"
+}
+
+I1221 21:22:37.684198  8090 net.cpp:340] Input 0 -> data
+I1221 21:22:37.684224  8090 net.cpp:340] Input 1 -> rois
+I1221 21:22:37.684233  8090 layer_factory.hpp:74] Creating layer conv1_1
+I1221 21:22:37.684238  8090 net.cpp:84] Creating Layer conv1_1
+I1221 21:22:37.684242  8090 net.cpp:380] conv1_1 <- data
+I1221 21:22:37.684247  8090 net.cpp:338] conv1_1 -> conv1_1
+I1221 21:22:37.684250  8090 net.cpp:113] Setting up conv1_1
+Floating point exception
+。。。我晕
+浮点数例外，不放弃，行百里者半于九十
+
+修改网络，改为caffenet
+出现新问题：
+Check failed: status == CUDNN_STATUS_SUCCESS (4 vs. 0)  CUDNN_STATUS_INTERNAL_ERROR
+*** Check failure stack trace: ***
+Aborted
+ 
+/****笑对人生****/
+接着解决问题，在解决问题中成长：
+
+接着解决问题：
+把 /home/tongpinmo/software/fast-rcnn/caffe-fast-rcnn/tools
+里面的 extract_features.cpp 的 14行的 #include "caffe/vision_layers.hpp"删掉
+
+make clean
+make -j8
+ 
+
+出现的新问题：
+CXX .build_release/src/caffe/proto/caffe.pb.cc
+tools/caffe.cpp: In function ‘int train()’:
+tools/caffe.cpp:123:12: error: ‘GetSolver’ is not a member of ‘caffe’
+     solver(caffe::GetSolver<float>(solver_param));
+            ^
+tools/caffe.cpp:123:29: error: expected primary-expression before ‘float’
+     solver(caffe::GetSolver<float>(solver_param));
+                             ^
+Makefile:501: recipe for target '.build_release/tools/caffe.o' failed
+
+
+把 caffe/tools/caffe.cpp里面的 123 行的 solver(caffe::GetSolver<float>(solver_param)); 改为
+ 
+ solver(caffe::SolverRegistry::CreateSolver<float>(solver_param));
+
+
+//////*******/////
+重新装一遍：
+
+前面的步骤都一样，一直到makefile.config之前，
+加了一个，在28行，-gencode arch=compute_61,code=compute_61
+
+CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+		-gencode arch=compute_20,code=sm_21 \
+		-gencode arch=compute_30,code=sm_30 \
+		-gencode arch=compute_35,code=sm_35 \
+		-gencode arch=compute_50,code=sm_50 \
+		-gencode arch=compute_50,code=compute_50 \  （此处不可少 \ 符号）
+		-gencode arch=compute_61,code=compute_61
+出现的问题是：
+Makefile.config:50: *** recipe commences before first target.  Stop.
+原因：第50行开头没有加上符号 \
+
+文件替换：
+1：/fast-rcnn/caffe-fast-rcnn/include/caffe/util/cudnn.hpp  换成/home/tongpinmo/software/caffe/include/caffe/util 里面的cudnn.cpp
+2: /home/tongpinmo/software/fast-rcnn/caffe-fast-rcnn/src/caffe/util 里面的cudnn.cpp 换成 
+	/home/tongpinmo/software/caffe/src/caffe/util 里面的cudnn.cpp
+3:将/home/tongpinmo/software/fast-rcnn/caffe-fast-rcnn/src/caffe/layers 里面的12个cudnn_开头的文件 替换成/home/tongpinmo/software/caffe/src/caffe/layers（16个） 里面对应的文件，还有lrn,lcn四个文件没拷贝
+4：把 home/tongpinmo/software/caffe/include/caffe/layers 对应报的错误里面的 No such file or directory .hpp文件，拷贝到  /home/tongpinmo/software/fast-rcnn/caffe-fast-rcnn/src/caffe/layers里面去，（这里面都是.cu,.cpp文件），不一定是cudnn开头的，比如有错误如下：
+
+/****
+./src/caffe/layers/cudnn_sigmoid_layer.hpp:10:41: fatal error: caffe/layers/neuron_layer.hpp: No such file or directory
+./src/caffe/layers/cudnn_pooling_layer.hpp:10:42: fatal error: caffe/layers/pooling_layer.hpp: No such file or directory
+
+***/
+
+make-j8 && make pycaffe 没有出问题
+
+./demo.py依旧是 Floating point exception
+
+如果把makefile.conf里面的 use_cudnn行不注释，就可以运行成功。不过这样就没有用到cudnn gpu加速的特性，失去了急速的意义啊
+/****
+有博客说 It’s like something about box size. the solution is add filter_roidb function in lib/fast_rcnn/train.py file, like here.
+Reference: https://github.com/rbgirshick/py-faster-rcnn/issues/159
+/****
+
+尝试：添加filter_roidb范围，在lib/fast_rcnn/train.py file 115行后面添加一个def filter_roidb(roidb) 23行的代码（116-138），其他没动
+
+错误依旧
+
+
+
+33：安装pycharm
+1:获取pycharm community版本
+
+http://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC
+
+下载
+2：cd /home/tongpinmo/software
+   tar -xvzf pycharm-community-2017.3.1.tar.gz 
+
+3:选择默认，用户界面主题 UI theme 就选择默认的吧，第一个是 Intellij，全都选择默认
+4：create new project
+5:new->python file
+6:启动pycharm-community的方式：
+ 1303  ls 
+ 1304  cd software/
+ 1305  ls 
+ 1306  cd pycharm-community-2017.3.1/
+ 1307  ls 
+ 1308  cd bin
+ 1309  ls 
+ 1310  ./pycharm.sh 
+
+34：安装qt+qtcreator
+ sudo apt-get install qtcreator
+安装 qt4
+ sudo apt-get install qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer qdevelop
+	
+    libqt4-sql-mysql libqwt5-qt4 libqwt5-qt4-dev
+
+
+如果还需要安装其它的qt库，可以命令行输入
+
+sudo apt-get install libqt4- 
+
+然后按tab键自动补全，就会列出所有以libqt4- 开头的软件包，
+
+使用：
+1：如果用桌面的形式的话呢：
+打开，按键盘上的windows键，找到 Qt Creator ，打开就可以了
+
+2：用terminal方式使用
+	ls
+1388 mkdir my_pro
+1389 ls
+1390 cd my_pro
+1391 ls
+1392 mkdir hello
+1393 cd hello
+1394 touch hello.cpp
+1395 qmake -project
+1396 ls						(出现了hello.pro)
+1397 qtcreator hello.pro&   （然后在edit-->sources-->hello.cpp 中写入程序）
+1398 ls
+1399 qmake
+1400 make
+1401 ls
+1402 ./hello
+
+如果是在build文件中运行的话，执行完　qtcreator hello.pro &
+cd build 
+qmake ..　(返回上一层执行)
+make
+即可！
+
+##cmake 方式
+如果有cmake.txt文件的话
+mkdir build
+cd build
+cmake ..
+make 
+ls(出现绿色可执行文件) 
+./该文件
+
+
+注意：
+1:如果在qtcreator里面修改了程序的话，再次运行的时候，先保存一下，然后重新make就行，
+ make 
+ ls 
+ ./hello
+
+2:再次打开的时候，从qmake开始
+
+
+
+liunx shell 命令之cat
+cat：查看文件的内容、连接文件、创建一个或多个文件和重定向输出到终端或文件  用法：cat [选项] [文件]
+
+1. $ cat hello.txt
+
+显示hello.txt文本文件中的内容 
+
+2. $ cat -n file
+
+-n选项，可以显示文件的内容和行号
+
+
+35：安装linux系统屏幕刷新率
+  
+ 执行： xrandr -s 1024*768 -r 85
+ 查看屏幕分辨率：xrandr
+
+36：进入命令行模式，tty1模式，
+  ctrl+Alt+F1~F6
+  切换到图形界面：ctrl+Alt+F7
+			   sudo startx
+  lightdm:桌面显示管理器，light-display-manger
+
+37： windows键-->Preferences-->fcitx configuration 可以把安装好的sogou pinyin移动到第一个位置
+    Preferences-->Languages-->Fcitx
+
+38：安装搜狗输入法
+
+安装目标：
+1.mint18上安装fctix输入法
+	language-->input method-->设置里面要添加对fcitx的支持，安装完成，fcitx后面什么都没有
+2.mint18上安装搜狗拼音输入法
+	下载deb包，双击，安装即可，
+3.配置搜狗拼音输入法为首选输入法
+	https://www.douban.com/note/580372630/
+	https://jingyan.baidu.com/article/14bd256e4dac61bb6d261293.html
+	http://blog.sina.com.cn/s/blog_de4da5fa0102vt5a.html
+	再次在menu里面找到fcitx（那个前面有小企鹅的那个选项）选项，然后双击了～～，就出现了添加输入法的界面，
+	然后就是点击添加按钮（右下角那个加号～～），先将Only show Current language的交叉号去掉，然后在输入
+	对话框里面输入Sogou,添加进去即可
+
+39：查看gcc,g++版本
+	gcc --version
+	g++ --version
+
+40：配置shadowsocks代理
+
+http://blog.csdn.net/u014266895/article/details/64922486
+firefox配置
+https://www.crifan.com/windows_use_shadowsocks_on_firefox_foxyproxy_standard_and_chrome_proxy_switchysharp_and_ie/
+
+
+# sudo apt-get update
+# sudo apt-get install python-pip git python-m2crypto
+# sudo pip install cymysql
+# sudo pip install shadowsocks
+
+cd /home/tongpinmo/software/shadowsocks
+sslocal -c ./shadowsocks.json
+
+firefox配置关键
+1：右击浏览器的三条杠-->Add-ones-->添加FoxyProxy Standard 
+2:FoxyProxy Standard 代理设置，Preferences-->proxy details-->Manual Proxy Configuration-->server or IP Address:127.0.0.1,port:1080
+3:socks proxy 选择socks v5
+4:点击ok
+
+使用代理：运行 sslocal -c ./shadowsocks.json 即可
+然后 在浏览器中的狐狸头像选择 Select Mode 
+
+使用shadowsocks：
+  cd software
+  cd shadowsocks
+  ls 
+  sudo sslocal -c ./shadowsocks.json
+
+41:ip地址访问其他电脑
+ ssh -X ubuntu@192.168.1.158（username,ip address)
+
+ ssh 访问服务器，在服务器山跑程序：
+　ssh -X ubuntu@192.168.1.158
+ 密码：１
+
+42:交换机和路由器的区别：
+
+交换机：交换机主要是实现大家通过一根网线上网，但是大家上网是分别拨号的，各自使用自己的宽带，大家各自上网没有影响，哪怕其他人在下载，对自己上网也没有影响，并且所有使用同一条交换机的电脑都是在同一个局域网内
+
+路由器：路由器比交换机多了一个虚拟拨号功能，通过同一台路由器上网的电脑是共用一个宽带账号，大家之间上网是相互影响的，并且同一台路由器上的电脑也是在一个局域网内的。
+
+
+路由器可以把一个IP分配给很多个主机使用，这些主机对外只表现出一个IP。交换机可以把很多主机连起来，这些主机对外各有各的IP。
+
+43：查看ip地址
+  ifconfig 里面的inet addr就是
+
+
+44：opencv的linux环境配置
+
+默认的opencv的版本就是2.4.9.1
+头文件和库文件的位置 pkg-config --cflags --libs opencv
+
+pkg-config --cflags opencv
+
+pkg-config --libs opencv
+
+版本查询 pkg-config --modversion opencv 
+
+一、安装
+
+1 安装cmake及一些依赖库
+sudo apt-get install cmake
+sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev 
+libavformat-dev libjpeg.dev libtiff4.dev libswscale-dev libjasper-dev
+
+
+二、安装opencv
+解压opencv：
+	
+	tar -zxvf opencv-2.4.13.tar.gz -C /home/tongpinmo
+或
+	unzip opencv-2.4.13.zip -d /home/tongpinmo
+
+
+opencv编译
+    mkdir release && cd release  
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=$HOME/local -D BUILD_opencv_gpu=OFF ..  
+    make -j4
+    make install  
+
+三、测试opencv 自带的sample
+
+	cd opencv-2.4.13/samples/
+	cmake .
+	make
+	cd cpp/
+	./cpp-example-edge
+
+###########################
+如果没有问题的话，就ok
+
+
+之前安装出现问题，按照出错的提示，修改 opencv-2.4.13-CMakeLists.txt-找到"with_cuda"字眼,把后面的都改为 OFF
+再试试上面的编译测试
+
+/**********************************/
+版本查询 pkg-config --modversion opencv 
+	发现自己的电脑上是2.4.9
+不大相信，再测试了一波
+比如再/home 写一个小程序，保存为main.c
+#include<stdio.h>
+#include<cv.h>
+
+int main(void)
+{
+	printf("%s\r\n",CV_VERSION);
+	printf("%u.%u.%u\r\n",CV_MAJOR_VERSION,CV_MINOR_VERSION,CV_SUBMINOR_VERSION);
+}
+打开terminal
+ 336  g++ `pkg-config --cflags opencv` main.c `pkg-config --libs opencv` -o main
+  337  ls 
+  338  ./main
+	 结果是 2.4.9.1
+		   2.4.9
+
+
+
+45:配置py-faster-rcnn环境
+
+Reference:
+1：https://github.com/rbgirshick/py-faster-rcnn
+2：http://m.blog.csdn.net/dlhlSC/article/details/75006407
+3：http://blog.csdn.net/samylee/article/details/51086153/
+
+1:git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
+
+2:生成Cython模块
+cd /home/tongpinmo/software/py-faster-rcnn/lib
+在py-faster-rcnn/lib目录下修改和编译Cython,将setup.py文件的第135行，‘nvcc':['-arch=sm_61',
+make
+
+3:生成caffe和pycaffe
+cd /home/tongpinmo/software/py-faster-rcnn/caffe-fast-rcnn
+cp Makefile.config.example Makefile.config
+
+修改一波Makefile.config文件，按照fast-rcnn的来
+
+5：py-faster-rcnn中的/home/tongpinmo/software/py-faster-rcnn/caffe-fast-rcnn/include/caffe
+	里面相对于fast-rcnn来说，多了一个layers层
+ 
+6：文件替换：
+py-faster-rcnn/caffe-fast-rcnn/include/caffe/util/cudnn.hpp  
+py-faster-rcnn/caffe-fast-rcnn/src/caffe/util/cudnn.cpp
+py-faster-rcnn/caffe-fast-rcnn/src/caffe/layers/ 下16个cudnn_开头的文件
+py-faster-rcnn/caffe-fast-rcnn/include/caffe/layers/下8个cudnn_开头的文件
+
+
+7：编译
+ make -j8 
+ make pycaffe
+没有问题！
+
+8：跑demo.py
+cd /home/tongpinmo/software/py-faster-rcnn/tools
+./demo.py
+
+完美！！！
+
+运行的结果在：/home/tongpinmo/software/py-faster-rcnn/data/result_pictures 这里面
+
+
+后面有空的话，还可以训练imagenet的数据，以及自己制作的数据集
+关于imagenet的数据：
+总结：
+    ImageNet训练数据集部分标注缺失object标签
+    ImageNet训练数据集object的宽高比过大
+
+
+ 46:apt-cache命令的常规用法
+
+1.apt-cache showpkg
+显示软件包的一些常规信息
+例: apt-cache showpkg openssh
+
+2.apt-cache stats
+显示相关的统计信息顯示相關的統計資訊
+
+3.apt-cache dump
+显示缓存中的每个软件包的简要描述信息
+
+4.apt-cache unmet
+显示不符合一致性的依赖关系
+
+5.apt-cache show
+显示指定软件包的记录信息。类似于rpm -qi
+
+6.apt-cache search +软件包的名字
+查找软件包，类似于rpm -qa|grep package_name
+例: apt-cache search openssh
+
+7.apt-cache depends
+显示软件包的依赖性关系
+8.apt-cache pkgnames
+列出所有的软件包
+
+
+47：grep命令
+grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。
+
+比如 在文件中搜索一个单词，命令会返回一个包含“match_pattern”的文本行：
+
+grep match_pattern file_name
+grep "match_pattern" file_name
+
+在多个文件中查找：
+
+grep "match_pattern" file_1 file_2 file_3 ...
+
+48：在terminal里面运行pycharm的程序
+ cd /home/tongpinmo/software/pycharm-community-2017.3.1/projects/t1
+ python t1.py run
+
+
+49:安装mysql.connector库
+源码安装方式：
+ cd Downloads/ 
+ 2003  ls 
+ 2004  pwd
+ 2006  wget http://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.1.1.tar.gz
+ 2007  tar -zxvf mysql-connector-python-2.1.1.tar.gz 
+ 2010  cd mysql-connector-python-2.1.1/
+ 2011  ls 
+ 2013  sudo python setup.py install
+
+
+50：安装redi
+
+第一步：编译安装
+wget http://download.redis.io/releases/redis-2.8.3.tar.gz
+
+tar xzf redis-2.8.3.tar.gz
+
+cd redis-2.8.3
+
+make 
+
+make test
+
+第二步：拷贝目录（其实没有的话应该也可以，好多教程并没有这一步）
+
+mkdir /usr/redis
+
+cp redis-server /usr/redis
+
+cp redis-benchmark /usr/redis
+
+cp redis-cli /usr/redis
+
+cp redis.conf /usr/redis 
+
+第三步：启动redis服务
+
+ 2032  cd /home/tongpinmo/Downloads/redis-2.8.3/src
+ 2033  ls 
+ 2034  ./redis-server 
+
+第四步：用客户端进行测试是否启动成功
+
+ 打开新的terminal,（一定要做！！！）
+ cd /home/tongpinmo/Downloads/redis-2.8.3/src
+ redis-cli
+ 127.0.0.1:6379> set foo bar(foo 是 key ,bar 是 value)
+OK
+127.0.0.1:6379> get foo
+"bar"
+
+ok!此时说明启动成功
+
+51:安装goose extractor
+Goose Extractor是一个Python的开源文章提取库。可以用它提取文章的文本内容、图片、视频、元信息和标签。
+
+cd Downloads
+virtualenv venv --python=python2.7
+. venv/bin/activate
+sudo pip install goose-extractor
+
+52:linux快捷键终端：
+移动光标
+
+    Ctrl – a ：移到行首
+    Ctrl – e ：移到行尾
+
+53:翻墙lantern
+https://github.com/getlantern/lantern  无脑配置,下载即可用
+
+
+54:cd .ssh/ (打开隐藏目录，在shell中以.开头的表示隐藏文件或目录，ls是看不到的，所以.ssh/是个隐藏目录，存放ssh密匙的文件夹）
+	ll（显示详细信息:id_rsa是私钥，id_rsa.pub是公钥）
+	more id_rsa.pub   （more命令是个显示文本内容的命令）
+	gedit id_rsa.pub  
+	more known_hosts  （known_hosts文件是记录链接到对方时，每次连线检查对方给的host key与你的记录的host key是否相同，进行简单的验证）
+
+
+55：mv 源文件  目标文件：将文件夹重命名
+
+56:sudo du -hs :查看某个目录的大小
+   sudo df -h  :查看磁盘的使用情况
+
+57：apt-cache search string //在源软件列表中查找相应的软件包
+
+58:运行 .ipynb文件 
+终端里运行：jupyter notebook
+然后就可以在浏览器中上传文件，运行
+在jupyter　notebook界面中，代码块蓝色部分表示可以运行，绿色部分表示可以编辑的状态。
+
+
+59:安装adobe reader:不过貌似不是很好用，不能添加标注
+ 2004  wget ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb
+ 2005  sduo apt-get install gdebi
+ 2007  sudo gdebi AdbeRdr9.5.5-1_i386linux_enu.deb
+ 2011  sudo apt-get install libgtk2.0-0:i386 libnss3-1d:i386 libnspr4-0d:i386 lib32nss-mdns libxml2:i386 libxslt1.1:i386 libstdc++6:i386
+ 2012  sudo apt-get install libnss3-id:i386
+ 2013  sudo apt-get install libgtk2.0
+ 2014  sudo apt-get install libgtk2.0-0:i386 
+ 2015  sudo apt install libnss3-1d:i386 libnspr4-0d:i386 lib32nss-mdns libxml2:i386 libxslt1.1:i386 libstdc++6:i386
+ 2017  sudo apt-get install libnss3-1d:i386 libnspr4-0d:i386  libxml2:i386 libxslt1.1:i386 libstdc++6:i386
+ 2018  sudo apt-get install libss3
+ 2019  sudo apt-get install libss
+ 2020  sudo apt-get install libnss
+ 2021  sudo apt-get install libnss3
+ 2022  sudo apt-get install libnss3-id:i386
+
+60:foxit reader linux版本安装（亲测好用）
+  •   使用以下命令进入下载文件所在目录(以/tmp文件夹为例):
+      # cd /sotfware
+  •   使用以下命令解压可执行文件:
+      # gzip -d FoxitReader_version_Setup.run.tar.gz
+  •   使用以下命令对.tar文件进行解包:
+      # tar xvf FoxitReader_version_Setup.run.tar
+  •   使用以下命令运行安装程序
+      # ./FoxitReader_version_Setup.run
+
+61:pytorch安装
+　pip方式，基于cuda8.0
+
+pip install http://download.pytorch.org/whl/cu75/torch-0.1.11.post5-cp27-none-linux_x86_64.whl 
+pip install torchvision 
+
+安装好之后测试：
+python
+import torch 
+import torchvision
+查看torch版本命令：
+print(torch.__version__)
+
+if no error ,that's ok!
+
+
+62:待机，挂起命令：
+sudo pm-suspend
+ctrl+alt+L(快捷键)
+
+63:linux 安装windows虚拟机碰到的问题：电脑bios-->cpu-->Virtualization Technology-->Enable开启这个功能，否则不能安装64位的
+
+64:sudo apt-get install ack-grep ：代码全文搜索，
+用法：ack-grep filename 可以查到该文件在哪个.py程序里面被用到
+
+65:linux 下面安装qq:http://blog.spursgo.com/zheteng/qq.html
+   linux 下面安装wechat:https://blog.csdn.net/mingtiandeqiang/article/details/76168066
+
+66:修复依赖关系的命令：sudo apt-get -f install
+
+67:linux 查看后台程序，杀死后台程序方法：
+1:system-monitor　类似于windows的后台程序管理器
+２：命令行:ps aux 查看所有的进程
+	查看某个特定的进程：如：ps aux | grep electronic-wechat
+	然后kill:kill +pid
+	全部kill:killall electronic-wechat
+
+68:文件夹下面显示隐藏文件的快捷键：ctrl+h
+69:安装matlab2013a
+步骤:
+sudo mkdir /media/matlab
+sudo mount -o loop /home/tongpinmo/software/Matlab.R2013a-linux/Mathworks.Matlab.R2013a.UNIX.iso /media/matlab
+cd /media/matlab
+sudo ./install
+
+然后不联网安装，序列号写入，激活，还是选择”without internet“，然后选择/media/matlab/serial文件夹下的license.lic文件。
+
+启动：
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin
+sudo ./matlab
+
+
+70:flownet2-pytorch:https://github.com/NVIDIA/flownet2-pytorch
+运行过程记录：
+一步一步来，
+进入docker环境，
+inference:运行完后生成了　文件夹：work 
+training and validation:
+
+71:find 是根据文件的属性进行查找，grep是按照文件的内容进行查找。
+
+find path expression 
+ege:find /usr httpd.conf (在/usr下面找到httpd.conf文件)
+
+grep命令:
+grep expression filename (在filename里面找到该expression)
+
+71:cmake --version
+   qmake --version
+
+72:将所有的文件都按照顺序从小打大排列：ls >> filelist.txt
+
+
+73:比较两个程序的不同点，有个软件是:diffuse
+使用方法：
+terminal:diffuse
+
+74:files 自然排序算法  
+for example:
+path='/ /'
+files=os.listdir(path)   #读取path下所有的文件名,但是返回的不一定是顺序的
+files=natsort.natsorted(files)   #自然排序算法
+
+75:对于用qtcreator建立的工程文件，运行的步骤：
+可以用g++来运行:
+如：
+
+
+　2001  mkdir nihe
+ 2002  ls 
+ 2003  cd nihe/
+ 2004  ls
+ 2005  touch main.cpp
+ 2006  ls
+ 2007  qmake -project
+ 2008  ls 
+ 2011  qtcreator nihe.pro &
+ 2012  ls 
+ 2023  qmake 
+ 2024  make
+ 2025  ls
+ 2038  g++ `pkg-config opencv --cflags` main.cpp  -o test `pkg-config opencv --libs` -std=c++11　（调用opencv库，调用c++11标准）
+ 2039  ./test 
+
+76:跑程序的时候选择cuda：cuda_visible_devices=0,1,2,3(选择０，１，２，３块cuda）
+
+77:查找某个文件,比如python　文件：用find 命令
+find -name 'kitti_raw_loader.py'
+
+78:下载断点下载：wget -c +URL：wget -c :继续执行上次终端的任务：断电续传
+　　下载后台下载: wget -b +URL
+
+79:linux 下写脚本：
+
+方法一：
+touch a.sh　
+gedit a.sh
+
+*******************
+
+#!/bin/bash
+python ~~~~
+
+*******************
+chmod +x a.sh　　（此处的权限一定要添加)
+然后就可以执行
+
+
+方法二：
+cat > a.sh
+输入：
+#!/bin/bash
+python ~~~~
+
+ctrl + d
+chmod +x a.sh　　（此处的权限一定要添加)
+然后就可以执行
+
+
+80：linux 下面　mv　cp rm 命令：
+mv :重命名:mv a.txt b.txt
+	移动文件：mv bash1 test  (前面是文件，后面是目录）
+	移动多个文件:mv bashrc1bashrc2bashrc3  mvtest(如果移动多个文件的话，后面一个一定是目录)
+
+cp:复制
+cp 选项　参数（参数包括源文件，目标文件)
+通常用.表示当前目录，用．．表示上一个目录
+
+如:
+ 将文件file复制到目录/usr/men/tmp下，并改名为file1
+
+cp file /usr/men/tmp/file1
+
+将目录/usr/men下的所有文件及其子目录复制到目录/usr/zh中
+
+cp -r /usr/men /usr/zh
+
+
+
+rm:删除
+语法: rm 选项　参数
+
+选项:
+-d：直接把欲删除的目录的硬连接数据删除成0，删除该目录；
+-f：强制删除文件或目录；
+-i：删除已有文件或目录之前先询问用户；
+-r或-R：递归处理，将指定目录下的所有文件与子目录一并处理；
+--preserve-root：不对根目录进行递归操作；
+-v：显示指令的详细执行过程。
+
+参数:
+文件：指定被删除的文件列表，如果参数中含有目录，则必须加上-r或者-R选项。
+
+用的比较多的有:rm -rf 参数
+
+
+82:python下查看一个module的所有属性
+ dir(module)
+如：
+
+>>> import serial
+>>> dir(serial)
+['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BufferError', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError', 'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', 'StandardError', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'ZeroDivisionError', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '__path__', 'abs', 'absolute_import', 'all', 'any', 'apply', 'ascii', 'basestring', 'bin', 'bool', 'buffer', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'cmp', 'coerce', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'division', 'divmod', 'enumerate', 'errors', 'eval', 'execfile', 'exit', 'file', 'filter', 'float', 'format', 'frozenset', 'generators', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'hooks', 'id', 'input', 'int', 'intern', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'long', 'map', 'max', 'memoryview', 'meta', 'min', 'model', 'native_str', 'nested_scopes', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'print_function', 'properties', 'property', 'quit', 'range', 'raw_input', 'reduce', 'reload', 'repr', 'request', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'standard_library', 'staticmethod', 'str', 'sum', 'super', 'sys', 'test', 'tuple', 'type', 'unichr', 'unicode', 'unicode_literals', 'utilities', 'vars', 'with_statement', 'xrange', 'zip']
+
+83:修复apt-get install 依赖关系
+ sudo apt-get -f install
+比如安装netease-cloud-music的时候：
+出现的错误是：netease-cloud-music: error while loading shared libraries: libvlc.so.5: cannot open shared object file: No such file or directory
+修复之后就ok了．
+
+
+84:df -hT
+
+85:fsck
+
+86:fdisk -l
+ 
+87:mkdir /mnt/backup-linux  建立备份文件
+　　　tar -cf /mnt/backup-linux/backup-linux.tar  Documents Projects Downloads  (将后面的三个文件都压缩到.tar中,参数f后面一定跟的是要处理的文档名，-f filename)
+
+88:linux 软件的安装：apt ,dpkg
+在linux，主要有两种软件管理器，分别是RPM和Debain的dpkg。
+dpkg：派生于debian的linux大多使用这个机制，包括ubuntu，B2D
+
+dpkg -i package.deb  安装
+dpkg -r package     删除
+dpkg -P package     删除包，包括配置问价
+dpkg -L package		列出与包关联的文件
+dpkg -l package		显示包的版本
+dpkg -l 			列出当前已经安装的包
+
+
+apt-get install		安装
+apt-get remove 		卸载
+apt-cache search	搜索软件包
+
+
+dpkg绕过apt包管理数据库对软件包进行操作，所以你用dpkg安装过的软件包用apt可以再安装一遍，系统不知道之前安装过了，将会覆盖之前dpkg的安装。
+
+dpkg是用来安装.deb文件,但不会解决模块的依赖关系,且不会关心ubuntu的软件仓库内的软件,可以用于安装本地的deb文件
+
+apt会解决和安装模块的依赖问题,并会咨询软件仓库, 但不会安装本地的deb文件, apt是建立在dpkg之上的软件管理工具
+
+
+89:linux 卡死：
+tty1 
+top
+kill -pid (消耗资源最多的进程)
+tty8　　(reback to graph )
+
+90:ln -s 软链接类似与windows下面的快捷方式。
+当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。例如：ln –s /bin/less /usr/local/bin/less
+
+ 1103  sudo ln -s /home/tongpinmo/software/pycharm-community-2017.3.1/bin/pycharm.sh  /usr/local/bin/pycharm
+ 1104  ls
+ 1105  pycharm
+
+$ sudo ln -s /usr/local/VSCode-linux-x64/code /usr/local/bin/code
+  code
+就可以启动vscode  
+
+91:修改windows,linux 启动顺序:
+ sudo gedit /etc/default/grub
+ 
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+GRUB_DEFAULT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+
+将GRUB_DEFAULT=0修改为4,即是windows的启动序号。
+
+sudo update-grub
+更新grub
+
+
+92:linux 安装vscode
+参照:http://www.cnblogs.com/lzpong/p/6145511.html
+
+	tar xzvf code-stable-code_1.25.1-1531323788_amd64.tar.gz 
+	ls
+	mv VSCode-linux-x64/ /usr/local
+	ls
+	sudo mv VSCode-linux-x64/ /usr/local
+	ls
+	chmod +x /usr/local/VSCode-linux-x64/code
+	sudo cp resources/app/resources/linux/code.png  /usr/share/icons
+	sudo ln -s /usr/local/VSCode-linux-x64/code /usr/local/bin/code
+	code 
+
+
+93:linux mint安装无线网卡启动的最简单办法：software manger --搜索 wireless---安装Bcmwl-kernel-source；
+它支持BCM4311-, BCM4312-, BCM4313-, BCM4321-, BCM4322-, BCM43224-, and BCM43225-, BCM43227- and BCM43228-based hardware.
+
+
+92:linux 安装vscode
+参照:http://www.cnblogs.com/lzpong/p/6145511.html
+
+	tar xzvf code-stable-code_1.25.1-1531323788_amd64.tar.gz 
+	ls
+	mv VSCode-linux-x64/ /usr/local
+	ls
+	sudo mv VSCode-linux-x64/ /usr/local
+	ls
+	chmod +x /usr/local/VSCode-linux-x64/code
+	sudo cp resources/app/resources/linux/code.png  /usr/share/icons
+	sudo ln -s /usr/local/VSCode-linux-x64/code /usr/local/bin/code
+	code 
+
+
+93:linux mint安装无线网卡驱动:
+1:打开driver manager查看系统recommended的部分，
+2:然后再在software-manager里面搜索相应的驱动，安装即可
+
+
+94:安装chromium浏览器:
+sudo apt install chromium-browser
+
+95:安装Lantern ：
+
+http://www.360doc.com/content/16/1216/22/8335678_615377541.s
+
+
+96:linux 统计一个目录下的文件个数和代码总行数的命令
+
+比如要找出sfmlearner下面所有的.py文件：
+find -name "*.py" | xargs wc -l
+
+设置深度
+find . -maxdepth 1 -name '*.py' | xargs wc -l
+
+97:pycharm 'module'has no attribute 'main'
+
+解决方法：
+
+其主要原因是 新版的 pip 更改了 部分api 将其中 pip.main() 改为 pip_main()，
+
+旧版的pycharm中 在packaging_tool.py 中引用的就是 pip.main()方法，所以会报错
+
+将\helpers\packaging_tool.py  文件改掉 
+y
+
+https://pan.baidu.com/s/1nMIrm5ArlUK6nB1xnJ8ptA
+
+
+98:打开图像化界面命令：nautilus
+
+
+99:服务器中杀掉进程的方法：kill -9 PID
+
+100：.bashrc中要显示图形界面的话，需要加上-X 
+
+101:重定向命令：比如要将一个文件夹里面的所有的图片或者是文件的名字都写在一个文件里面的话，处理的方式是：
+	ls > file.txt
+就可以将所在目录里面的文件名都写在file.txt里面
+
+102:easy_install 使用方法
+安装：easy_install package
+卸载: easy_install -m package
+
+
+103:install shadowsocks
+sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+
+
+104:chrome browser
+sudo apt install chromium-browser
+
+
+105：/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/__init__.py:83: RequestsDependencyWarning: Old version of cryptography ([1, 2, 3]) may cause slowdown.
+  warnings.warn(warning, RequestsDependencyWarning)
+pip 18.1 from /usr/local/lib/python2.7/dist-packages/pip (python 2.7)
+ 千万不要更新密码库，本人被坑得很惨，最后重装，呜呜呜！
+
+
+
+
+
+
+
+
+
+
+
+
+
