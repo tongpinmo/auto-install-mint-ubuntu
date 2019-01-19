@@ -50,7 +50,8 @@ $sudo apt-get install cmake
 $sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev 
 $sudo apt-get install libavformat-dev libjpeg.dev libtiff4.dev libswscale-dev libjasper-dev
 
-
+#install jupyter
+$sudo apt-get install jupyter
 
 
 

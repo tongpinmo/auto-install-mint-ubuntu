@@ -22,6 +22,13 @@
   验证操作系统：
   lsb_release -a 
 
+  查看tensorflow ,pytorch 版本
+  python
+  import tensorflow as tf 
+  import torch
+  tf.__version__
+  torch.__version__
+
 2:截图的命令
   sudo apt-get install scrot
   scrot -s
@@ -214,9 +221,11 @@ ubuntu 下面有趣的命令
 
  tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz #or extract cudnn file
 　cd cuda/
- ls (include lib64)
+ ls (有include lib64 两个文件夹)
 
  将include中的cudnn.h文件和lib64中的.so文件拷贝到cuda8.0相应的目录中去(/usr/local/cuda 会链接到cuda-8.0下面去的)
+
+
  cd lib64/
 
  sudo cp lib* /usr/local/cuda-8.0/lib64/
@@ -759,6 +768,7 @@ http://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&co
 3:选择默认，用户界面主题 UI theme 就选择默认的吧，第一个是 Intellij，全都选择默认
 4：create new project
 5:new->python file
+
 6:启动pycharm-community的方式：
  1303  ls 
  1304  cd software/
@@ -768,6 +778,23 @@ http://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&co
  1308  cd bin
  1309  ls 
  1310  ./pycharm.sh 
+
+7:启动vscode方式一样：
+ls 
+cd clion-2018.2.2
+cd bin
+ls 
+./clion.sh
+
+8:建立软链接：
+$ sudo ln -s /home/tongpinmo/software/pycharm-community-2017.3.1/bin/pycharm.sh  /usr/local/bin/pycharm
+$ ls
+$ pycharm
+
+$ sudo ln -s /home/tongpinmo/software/clion-2018.2.2/bin/clion.sh /usr/local/bin/vscode
+$ ls
+$ vscode
+
 
 34：安装qt+qtcreator
  sudo apt-get install qtcreator
@@ -1444,12 +1471,13 @@ tty8　　(reback to graph )
 90:ln -s 软链接类似与windows下面的快捷方式。
 当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。例如：ln –s /bin/less /usr/local/bin/less
 
- 1103  sudo ln -s /home/tongpinmo/software/pycharm-community-2017.3.1/bin/pycharm.sh  /usr/local/bin/pycharm
- 1104  ls
- 1105  pycharm
+$ sudo ln -s /home/tongpinmo/software/pycharm-community-2017.3.1/bin/pycharm.sh  /usr/local/bin/pycharm
+$ ls
+$ pycharm
 
+对vs-code 建立软链接
 $ sudo ln -s /usr/local/VSCode-linux-x64/code /usr/local/bin/code
-  code
+$ code
 就可以启动vscode  
 
 91:修改windows,linux 启动顺序:
@@ -1570,7 +1598,8 @@ sudo apt install chromium-browser
 pip 18.1 from /usr/local/lib/python2.7/dist-packages/pip (python 2.7)
  千万不要更新密码库，本人被坑得很惨，最后重装，呜呜呜！
 
-
+106:安装jupyter notebook
+$ sudo apt-get install jupyter
 
 
 
